@@ -7,7 +7,9 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", g.MainHandler)
+	fs := http.FileServer(http.Dir("static/"))
+	http.Handle("/", fs)
+	http.HandleFunc("/artists", g.ArtistsHandler)
 
 	err := http.ListenAndServe("localhost:80", nil)
 

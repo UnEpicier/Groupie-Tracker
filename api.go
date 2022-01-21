@@ -25,17 +25,19 @@ type Artists struct {
 
 var ArtistsTab []Artists
 
-func APIRequest() {
-	req, err := http.Get("https://groupietrackers.herokuapp.com/api/artists")
+func APIRequest(url string) int {
+	req, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
+		return 1
 	}
 
 	data, err := ioutil.ReadAll(req.Body)
 	if err != nil {
 		log.Fatal(err)
+		return 1
 	}
 
 	json.Unmarshal(data, &ArtistsTab)
-
+	return 0
 }
