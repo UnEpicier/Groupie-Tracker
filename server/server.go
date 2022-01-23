@@ -7,10 +7,15 @@ import (
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("static/"))
-	http.Handle("/", fs)
+	// Serve CSS and JavaScript
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./static/css"))))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./static/js"))))
+
+	// Handle Pages Templates
+	http.HandleFunc("/", g.IndexHandler)
 	http.HandleFunc("/artists", g.ArtistsHandler)
 
+	// Start the server
 	err := http.ListenAndServe("localhost:80", nil)
 
 	if err != nil {
