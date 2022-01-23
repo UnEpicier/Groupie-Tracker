@@ -16,6 +16,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    animation: 1s ease-in 2s 1 normal forwards running fadeIn;
 }
 
 .title {
@@ -62,6 +64,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-clip: border-box;
+    opacity: 0;
+    animation: 5s ease-in 0s 1 normal forwards running fadeIn;
 }
 
 .image:nth-child(1) {
