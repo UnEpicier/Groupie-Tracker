@@ -46,6 +46,11 @@
     text-decoration: none;
     color: #fff;
     outline: none;
+    transition: background-color .5s;
+}
+
+.btn:hover {
+    background-color: #640987;
 }
 
 .btn:focus {

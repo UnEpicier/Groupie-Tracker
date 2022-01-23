@@ -18,17 +18,17 @@ func getRandomAlbum(as ArtistsStruct) []string {
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(images), func(i, j int) { images[i], images[j] = images[j], images[i] })
 
-	// If we have more than 7 urls (strings), we only take the 7th ones.
+	// If we have more than 6 urls (strings), we only take the 6th ones.
 	// Else, we take the entire slice
-	if len(images) > 7 {
+	if len(images) > 6 {
 		for k, v := range images {
-			if k > 7 {
+			if k > 6 {
 				break
 			}
 
 			result = append(result, v)
 		}
-	} else if len(images) <= 7 {
+	} else if len(images) <= 6 {
 		result = append(result, images...)
 	}
 
