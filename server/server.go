@@ -15,6 +15,7 @@ func main() {
 	// Handle Pages Templates
 	http.HandleFunc("/", g.IndexHandler)
 	http.HandleFunc("/artists", g.ArtistsHandler)
+	http.HandleFunc("/artist", g.ArtistHandler)
 
 	// Start the server
 	err := http.ListenAndServe("localhost:80", nil)

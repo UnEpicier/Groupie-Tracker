@@ -41,3 +41,17 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 }
+
+func ArtistHandler(w http.ResponseWriter, r *http.Request) {
+	tplt := template.Must(template.ParseFiles("./static/a.html"))
+
+	APIRequest("https://groupietrackers.herokuapp.com/api/artists")
+	data := ArtistsStruct{
+		Tab: ArtistsTab,
+	}
+
+	err := tplt.Execute(w, data)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
