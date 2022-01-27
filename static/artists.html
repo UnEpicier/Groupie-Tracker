@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,12 @@
     <title>Artists | Groupie Tracker</title>
     <link rel="stylesheet" href="css/artists.css">
 </head>
+
 <body>
+    <nav class="navbar"></nav>
     <section class="artists hidden">
         <h1 class="title">Artists</h1>
-        <div class="container"> 
+        <div class="container">
             <a href="?a=Queen" class="thumbnail">
                 <img src="./assets/images/queen.png" data-title="PD" alt="thumbnail">
                 <p class="hover-text">Test</p>
@@ -33,13 +36,55 @@
             </a>
         </div>
     </section>
-    <!-- {{ range .Tab }}
-    <p>{{ .Name }}</p>
-    {{ end }} -->
     <section class="infos">
-        <div class= "container1">
-            <img src="./assets/images/queen.png" alt="image">
+        <div class="card">
+            <div class="header">
+                <img src="./assets/images/queen.png" alt="album">
+                <p>GROUP NAME</p>
+            </div>
+            <div class="content">
+                <div class="grid">
+                    <div class="cols">
+                        <p>MEMBRES:</p>
+                        <ul class="list">
+                            <li>Membre 1</li>
+                            <li>Membre 1</li>
+                            <li>Membre 1</li>
+                        </ul>
+                    </div>
+                    <div class="cols">
+                        <p>DATE DE CREATION: </p>
+                        <p>PREMIER ALBUM: </p>
+                    </div>
+                </div>
+                <div class="concert">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    PROCHAINS CONCERTS
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>DATES</th>
+                                <th>LIEUX</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Date 1</td>
+                                <td>Lieux 1</td>
+                            </tr>
+                            <tr>
+                                <td>Date 1</td>
+                                <td>Lieux 1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </section>    
+    </section>
 </body>
+
 </html>
