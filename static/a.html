@@ -10,25 +10,34 @@
 </head>
 
 <body>
+    <nav class="navbar">
+        <a href="./index.html" class="btn">←←←</a>
+    </nav>
     <section class="infos">
         <div>
             <div class="header">
-                <img src="./assets/images/queen.png" alt="album">
-                <p>GROUP NAME</p>
+                <img src="{{ .Image }}" alt="album">
+                <p>{{ .Name }}</p>
             </div>
             <div class="content">
                 <div class="grid">
-                    <div>
+                    <div class="cols">
                         <p>MEMBRES:</p>
                         <ul class="list">
-                            <li>Membre 1</li>
-                            <li>Membre 1</li>
-                            <li>Membre 1</li>
+                            {{ range .Members }}
+                            <li>{{ . }}</li>
+                            {{ end }}
                         </ul>
                     </div>
-                    <div>
-                        <p>DATE DE CREATION: </p>
-                        <p>PREMIER ALBUM: </p>
+                    <div class="cols">
+                        <div>
+                            <p>DATE DE CREATION: </p>
+                            <span>{{ .CreationDate }}</span>
+                        </div>
+                        <div>
+                            <p>PREMIER ALBUM: </p>
+                            <span>{{ .FirstAlbum }}</span>
+                        </div>
                     </div>
                 </div>
                 <div class="concert">

@@ -3,6 +3,7 @@ package groupie
 import (
 	"log"
 	"net/http"
+	"strings"
 	"text/template"
 )
 
@@ -42,6 +43,18 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+type Artist struct {
+	Id           int
+	Image        string
+	Name         string
+	Members      []string
+	CreationDate int
+	FirstAlbum   string
+	Locations    string
+	ConcertDates string
+	Relations    string
+}
+
 func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	tplt := template.Must(template.ParseFiles("./static/a.html"))
 
@@ -50,7 +63,23 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 		Tab: ArtistsTab,
 	}
 
-	err := tplt.Execute(w, data)
+	a := r.URL.RawQuery
+	a = strings.ReplaceAll(a, "a=", "")
+	a = strings.ReplaceAll(a, "%20", " ")
+
+	if r.URL.RawQuery == "" {
+		http.Redirect(w, r, "/artists", http.StatusMovedPermanently)
+	}
+
+	artist := Artist{}
+
+	for i := 0; i < len(data.Tab); i++ {
+		if data.Tab[i].Name == a {
+			artist = Artist(data.Tab[i])
+		}
+	}
+
+	err := tplt.Execute(w, artist)
 	if err != nil {
 		log.Fatal(err)
 	}

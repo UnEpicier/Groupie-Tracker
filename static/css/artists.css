@@ -10,10 +10,47 @@ body {
     background-color: #2C272E;
 }
 
-
-.hidden {
-    display: none !important;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D3D1C7;
+    padding: 15px;
+    height: 60px;
+    font-size: 30px;
+    text-decoration: none;
 }
+
+
+.btn {
+    position: absolute;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    color: #2C272E;
+    height: 10;
+    line-height: 20px;
+    padding-bottom: 10px;
+}
+
+.btn:after {    
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 2px;
+    background: none repeat scroll 0 0 transparent;
+    background: #2C272E;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.btn:hover:after { 
+    left: 0;
+    width: 100%;
+}
+
 
 .artists {
     display: flex;
