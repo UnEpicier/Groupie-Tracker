@@ -124,55 +124,46 @@ span {
 
 .concert {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
 }
 
-table {
+.table {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    border: 1px solid #ddd;
     border-collapse: collapse;
 }
 
-table > * {
+.tablecols {
+    flex: 1 1 50%;
+    list-style: none;
     border-collapse: collapse;
-}
-
-thead {
-    width: 100%;
-    color: #fff;
-}
-
-thead > tr {
-    width: 100%;
-}
-
-thead > tr:nth-child(1) {
-    border-bottom: 1px solid #ddd;
-}
-
-thead > tr > th {
-    padding: 10px 0;
     font-weight: 300;
-}
-
-tbody {
-    padding: 10px;
-    width: 100%;
-}
-
-tbody > tr > th {
-    font-weight: 400;
     text-align: center;
+    color: #b7b4a4;
+}
+
+.tableTitle {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: #d9d7cf;
+}
+
+.tableColsTitle {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .15em;
     color: #D3D1C7;
 }
 
-td {
-    padding: 10px 5px;
-    width: 50%;
-    border: 1px solid #ddd;
-    font-weight: 300;
-    color: #b7b4a4;
+.tablecols > li {
+    padding: 5px 0;
+    border-collapse: collapse;
+    border: 1px solid #fff;
 }
 
 @media screen and (max-width: 768px) {
