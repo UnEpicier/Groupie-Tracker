@@ -71,6 +71,8 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	locs := []string{}
 	for k, v := range Rels.DatesLocations {
 		for _, j := range v {
+			k = strings.ReplaceAll(k, "_", " ")
+			k = strings.Title(k)
 			locs = append(locs, k)
 			dates = append(dates, j)
 		}
