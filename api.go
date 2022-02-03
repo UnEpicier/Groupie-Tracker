@@ -5,39 +5,39 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 )
-
-type ArtistsStruct struct {
-	Tab []Artists
-}
-
-type Artists struct {
-	Id           int      `json:"id"`
-	Image        string   `json:"image"`
-	Name         string   `json:"name"`
-	Members      []string `json:"members"`
-	CreationDate int      `json:"creationDate"`
-	FirstAlbum   string   `json:"firstAlbum"`
-	Locations    string   `json:"locations"`
-	ConcertDates string   `json:"concertDates"`
-	Relations    string   `json:"relations"`
-}
 
 var ArtistsTab []Artists
 
-func APIRequest(url string) int {
+func APIRequest(url string) {
 	req, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
-		return 1
 	}
 
 	data, err := ioutil.ReadAll(req.Body)
 	if err != nil {
 		log.Fatal(err)
-		return 1
 	}
 
 	json.Unmarshal(data, &ArtistsTab)
-	return 0
+}
+
+var Rels = Relations{}
+
+func GetRelations(id int) {
+	Rels = Relations{}
+
+	req, err := http.Get("https://groupietrackers.herokuapp.com/api/relation/" + strconv.Itoa(id))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	data, err := ioutil.ReadAll(req.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	json.Unmarshal(data, &Rels)
 }

@@ -99,6 +99,7 @@ body {
 }
 
 .thumbnail > .hover-text {
+    background-color: rgba(128, 128, 128, .3);
     z-index: 2;
     position: absolute;
     top: 0;

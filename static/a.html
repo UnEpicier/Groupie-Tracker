@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist | Groupie Tracker</title>
-    <link rel="stylesheet" href="./css/card.css">
+    <link rel="stylesheet" href="./css/a.css">
 </head>
 
 <body>
     <nav class="navbar">
-        <a href="./artists.html" class="btn">←←←</a>
+        <a href="./artists" class="btn">←←←</a>
     </nav>
     <section class="infos">
         <div>
             <div class="header">
-                <img src="{{ .Image }}" alt="album">
-                <p>{{ .Name }}</p>
+                <img src="{{ .A.Image }}" alt="album">
+                <p>{{ .A.Name }}</p>
             </div>
             <div class="content">
                 <div class="grid">
                     <div class="cols">
                         <p>MEMBRES:</p>
                         <ul class="list">
-                            {{ range .Members }}
+                            {{ range .A.Members }}
                             <li>{{ . }}</li>
                             {{ end }}
                         </ul>
@@ -32,11 +32,11 @@
                     <div class="cols">
                         <div>
                             <p>DATE DE CREATION: </p>
-                            <span>{{ .CreationDate }}</span>
+                            <span>{{ .A.CreationDate }}</span>
                         </div>
                         <div>
                             <p>PREMIER ALBUM: </p>
-                            <span>{{ .FirstAlbum }}</span>
+                            <span>{{ .A.FirstAlbum }}</span>
                         </div>
                     </div>
                 </div>
@@ -45,15 +45,15 @@
                     <div class="table">
                         <ul class="tablecols">
                             <li class="tableColsTitle"> DATES</li>
-                            <li> DATE 1</li>
-                            <li> DATE 1</li>
-                            <li> DATE 1</li>
+                            {{ range .Dates }}
+                            <li>{{ . }}</li>
+                            {{ end }}
                         </ul>
                         <ul class="tablecols">
                             <li class="tableColsTitle"> LIEUX</li>
-                            <li> LIEU 1</li>
-                            <li> LIEU 1</li>
-                            <li> LIEU 1</li>
+                            {{ range .Locations }}
+                            <li>{{ . }}</li>
+                            {{ end }}
                         </ul>
                     </div>
                 </div>

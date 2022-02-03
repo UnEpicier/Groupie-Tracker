@@ -43,20 +43,10 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-type Artist struct {
-	Id           int
-	Image        string
-	Name         string
-	Members      []string
-	CreationDate int
-	FirstAlbum   string
-	Locations    string
-	ConcertDates string
-	Relations    string
-}
-
 func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	tplt := template.Must(template.ParseFiles("./static/a.html"))
+
+	F := Final{}
 
 	APIRequest("https://groupietrackers.herokuapp.com/api/artists")
 	data := ArtistsStruct{
@@ -66,20 +56,29 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	a := r.URL.RawQuery
 	a = strings.ReplaceAll(a, "a=", "")
 	a = strings.ReplaceAll(a, "%20", " ")
-
 	if r.URL.RawQuery == "" {
 		http.Redirect(w, r, "/artists", http.StatusMovedPermanently)
 	}
 
-	artist := Artist{}
-
 	for i := 0; i < len(data.Tab); i++ {
 		if data.Tab[i].Name == a {
-			artist = Artist(data.Tab[i])
+			F.A = Artist(data.Tab[i])
 		}
 	}
 
-	err := tplt.Execute(w, artist)
+	GetRelations(F.A.Id)
+	dates := []string{}
+	locs := []string{}
+	for k, v := range Rels.DatesLocations {
+		for _, j := range v {
+			locs = append(locs, k)
+			dates = append(dates, j)
+		}
+	}
+	F.Dates = dates
+	F.Locations = locs
+
+	err := tplt.Execute(w, F)
 	if err != nil {
 		log.Fatal(err)
 	}
