@@ -53,12 +53,15 @@ body {
 }
 
 .navSearch {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .search {
+    z-index: 3;
+    position: relative;
     padding: 2.5px 5px;
     border: 1px solid #2C272E;
     border-radius: 5px;
@@ -78,6 +81,42 @@ body {
     background-color: #2C272E;
     color: #D3D1C7;
     outline: none;
+    cursor: pointer;
+    transition: filter .3s ease 0s;
+}
+
+.searchBtn:hover {
+    filter: brightness(120%);
+}
+
+.suggestList {
+    z-index: 1;
+    position: absolute;
+    top: calc(100% - 5px);
+    left: 0;
+    padding: 10px;
+    padding-top: 0;
+    width: calc(100% - 28px);
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #2C272E;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.suggestList > li {
+    height: 30px;
+}
+
+.suggestList > li:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.suggestList > li > a {
+    height: max-content;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #2C272E;
 }
 
 .artists {
