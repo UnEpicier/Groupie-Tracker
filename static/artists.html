@@ -7,11 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artists | Groupie Tracker</title>
     <link rel="stylesheet" href="css/artists.css">
+    <script src="https://kit.fontawesome.com/019c1af01b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <nav class="navbar">
-        <a href="./index.html" class="btn">←←←</a>
+        <a href="./index.html" class="back">←←←</a>
+        <form class="navSearch" method="post">
+            <input type="search" name="search" class="search" placeholder="Search an artist"  required>
+            <button type="submit" class="searchBtn"><i class="fas fa-search"></i></button>
+        </form>
     </nav>
     <section class="artists">
         <h1 class="title">Artists</h1>
