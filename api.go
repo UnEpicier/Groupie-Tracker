@@ -43,13 +43,11 @@ func GetRelations(id int) {
 	json.Unmarshal(data, &Rels)
 }
 
-var M = Map{}
+var M []Map
 
 func GetMap(address string) {
 	address = strings.ToLower(address)
 	address = strings.ReplaceAll(address, " ", "+")
-
-	M = Map{}
 
 	req, err := http.Get("https://nominatim.openstreetmap.org/search?q=" + address + "&format=json")
 	if err != nil {

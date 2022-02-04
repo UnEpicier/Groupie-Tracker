@@ -17,6 +17,8 @@ func main() {
 	http.HandleFunc("/artists", g.ArtistsHandler)
 	http.HandleFunc("/artist", g.ArtistHandler)
 
+	g.GetMap("89+Quai+Des+Chartrons")
+
 	// Start the server
 	err := http.ListenAndServe("localhost:80", nil)
 

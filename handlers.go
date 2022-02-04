@@ -80,6 +80,8 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	F.Dates = dates
 	F.Locations = locs
 
+	GetMap("")
+
 	err := tplt.Execute(w, F)
 	if err != nil {
 		log.Fatal(err)
