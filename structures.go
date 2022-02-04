@@ -32,6 +32,7 @@ type Final struct {
 	A         Artist
 	Dates     []string
 	Locations []string
+	Map       string
 }
 
 /******************/
