@@ -41,3 +41,21 @@ type Relations struct {
 	Id             int                 `json:"id"`
 	DatesLocations map[string][]string `json:"datesLocations"`
 }
+
+type MapStruct struct {
+	Tab []Map
+}
+
+type Map struct {
+	Place_id     int      `json:"place_id"`
+	Licence      string   `json:"licence"`
+	Osm_type     string   `json:"osm_type"`
+	Osm_id       int      `json:"osm_id"`
+	Boundingbox  []string `json:"boundingbox"`
+	Lat          string   `json:"lat"`
+	Lon          string   `json:"lon"`
+	Display_name string   `json:"display_name"`
+	Class        string   `json:"class"`
+	Type         string   `json:"type"`
+	Importance   float64  `json:"importance"`
+}
