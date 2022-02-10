@@ -41,3 +41,14 @@ const reqSuggests = (event) => {
         }
     }
 }
+
+/* Filters bars */
+// filtersContainer
+const toggleFilters = () => {
+    const el = document.getElementsByClassName('filtersContainer')[0];
+    if (el.classList.contains('filtersActive')) {
+        el.classList.remove('filtersActive')
+    } else {
+        el.classList.add('filtersActive')
+    }
+}

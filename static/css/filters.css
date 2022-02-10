@@ -1,0 +1,76 @@
+.filtersContainer {
+    --btnSize: 100px;
+    z-index: 2;
+    position: fixed;
+    top: 60px;
+    right: -150px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 150px;
+    height: calc(100vh - 60px);
+    background-color: tomato;
+    transition: right 1s ease 0s;
+}
+
+.filtersActive {
+    right: 0;
+}
+
+.filtersContainer:not(.filtersActive) > .menu {
+    margin-left: calc(0px - var(--btnSize));
+}
+
+
+/* START Button */
+.menu {
+    display: flex;
+    padding: 0;
+    width: var(--btnSize);
+    height: var(--btnSize);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: margin-left 1s ease 0s;
+}
+
+.line {
+    fill: none;
+    stroke: #D3D1C7;
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+}
+
+.line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+.opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+}
+
+.opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+/* END Button */
