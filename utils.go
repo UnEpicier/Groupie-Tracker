@@ -34,3 +34,16 @@ func getRandomAlbum(as ArtistsStruct) []string {
 
 	return result
 }
+
+func contains(s []string, e string) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
+}
+
+func remove(slice []string, s int) []string {
+	return append(slice[:s], slice[s+1:]...)
+}

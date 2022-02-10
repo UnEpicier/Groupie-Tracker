@@ -172,6 +172,7 @@ body {
     overflow: hidden;
     color : #2C272E;
     cursor: pointer;
+    border-radius: 7px;
 }
 
 .thumbnail > img {

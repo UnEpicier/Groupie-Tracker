@@ -80,7 +80,20 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	F.Dates = dates
 	F.Locations = locs
 
-	GetMap("")
+	for i := 0; i < len(locs); i++ {
+		if contains(locs[i+1:], locs[i]) {
+			locs = remove(locs, i)
+			i--
+		}
+	}
+
+	coords := map[string][]string{}
+	for _, v := range locs {
+		GetMap(v)
+		coords[v] = []string{M[0].Lat, M[0].Lon}
+	}
+
+	F.Coords = coords
 
 	err := tplt.Execute(w, F)
 	if err != nil {

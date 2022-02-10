@@ -32,7 +32,7 @@ type Final struct {
 	A         Artist
 	Dates     []string
 	Locations []string
-	Map       string
+	Coords    map[string][]string
 }
 
 /******************/
@@ -40,10 +40,6 @@ type Final struct {
 type Relations struct {
 	Id             int                 `json:"id"`
 	DatesLocations map[string][]string `json:"datesLocations"`
-}
-
-type MapStruct struct {
-	Tab []Map
 }
 
 type Map struct {

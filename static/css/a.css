@@ -1,13 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    user-select: none;
-}
-
-body {
-    background-color: #2C272E;
+.hidden {
+    display: none;
 }
 
 .navbar {
@@ -174,4 +166,13 @@ span {
     .cols:nth-child(1) {
         margin-right: 0;
     }
+}
+
+/** css map **/
+
+#map {
+    --size: 400px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: var(--size);
 }

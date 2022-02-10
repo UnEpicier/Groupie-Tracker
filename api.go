@@ -46,6 +46,7 @@ func GetRelations(id int) {
 var M []Map
 
 func GetMap(address string) {
+	M = []Map{}
 	address = strings.ToLower(address)
 	address = strings.ReplaceAll(address, " ", "+")
 
