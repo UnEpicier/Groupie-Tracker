@@ -1,6 +1,6 @@
 <h1 align="center">Groupie Tracker</h1>
 
-> Project made by ROULLAND Roxanne and LAROUMANIE Gabriel
+> Project made by ROULLAND Roxanne and LAROUMANIE Gabriel, VASSEUR Alexis
 
 ## Summary
 - [Description](#description)

@@ -10,7 +10,6 @@ const initMap = (coords, markers) => {
     */
     let marks = []
     let map = L.map('map').setView([coords[0] || 0, coords[1] || 0], 11)
-    let markerClusters = L.markerClusterGroup()
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         minZoom: 1,

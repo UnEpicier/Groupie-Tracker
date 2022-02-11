@@ -8,7 +8,9 @@
     <title>Artists | Groupie Tracker</title>
     <link rel="stylesheet" href="css/globals.css">
     <link rel="stylesheet" href="css/artists.css">
+    <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/choosevalue.css">
     <script src="https://kit.fontawesome.com/019c1af01b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -23,7 +25,11 @@
             </ul>
         </form>
     </nav>
-    <div class="filtersContainer">
+
+    <div class="stuff">
+        <div id="flat-slider"></div>
+    </div>
+    <div class="filtersContainer filtersActive">
         <button class="menu" onclick="this.classList.toggle('opened'); toggleFilters()">
             <svg viewBox="0 0 100 100">
                 <path class="line line1"
@@ -33,6 +39,95 @@
                     d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
             </svg>
         </button>
+        <form class="filtersPanel">
+            <p class="filtersTitle">Filters</p>
+            <div class="filters">
+                <!-- Custom element -->
+                <input type="text" class="js-range-slider" name="my_range" value="" data-skin="round" data-type="double"
+                    data-min="0" data-max="1000" data-grid="false" />
+                <!--  -->
+                <input class="chosen-value" type="text" value="" placeholder="Type to filter">
+                <ul class="value-list">
+                    <li>Alabama</li>
+                    <li>Alaska</li>
+                    <li>Arizona</li>
+                    <li>Arkansas</li>
+                    <li>California</li>
+                    <li>Colorado</li>
+                    <li>Connecticut</li>
+                    <li>Delaware</li>
+                    <li>Florida</li>
+                    <li>Georgia</li>
+                    <li>Hawaii</li>
+                    <li>Idaho</li>
+                    <li>Illinois</li>
+                    <li>Indiana</li>
+                    <li>Iowa</li>
+                    <li>Kansas</li>
+                    <li>Kentucky</li>
+                    <li>Louisiana</li>
+                    <li>Maine</li>
+                    <li>Maryland</li>
+                    <li>Massachusetts</li>
+                    <li>Michigan</li>
+                    <li>Minnesota</li>
+                    <li>Mississippi</li>
+                    <li>Missouri</li>
+                    <li>Montana</li>
+                    <li>Nebraska</li>
+                    <li>Nevada</li>
+                    <li>New Hampshire</li>
+                    <li>New Jersey</li>
+                    <li>New Mexico</li>
+                    <li>New York</li>
+                    <li>North Carolina</li>
+                    <li>North Dakota</li>
+                    <li>Ohio</li>
+                    <li>Oklahoma</li>
+                    <li>Oregon</li>
+                    <li>Pennsylvania</li>
+                    <li>Rhode Island</li>
+                    <li>South Carolina</li>
+                    <li>South Dakota</li>
+                    <li>Tennessee</li>
+                    <li>Texas</li>
+                    <li>Utah</li>
+                    <li>Vermont</li>
+                    <li>Virginia</li>
+                    <li>Washington</li>
+                    <li>West Virginia</li>
+                    <li>Wisconsin</li>
+                    <li>Wyoming</li>
+                </ul>
+                <div>
+                    <p>How many members in a group do you want ? </p>
+
+                    <input type="checkbox" id="1Member" name="member">
+                    <label for="1Membre">1</label>
+
+                    <input type="checkbox" id="2Member" name="member">
+                    <label for="2Membre">2</label>
+
+                    <input type="checkbox" id="3Member" name="member">
+                    <label for="3Membre">3</label>
+
+                    <input type="checkbox" id="4Member" name="member">
+                    <label for="4Membre">4</label>
+
+                    <input type="checkbox" id="5Member" name="member">
+                    <label for="5Membre">5</label>
+
+                    <input type="checkbox" id="6Member" name="member">
+                    <label for="6Membre">6</label>
+                    
+                    <input type="checkbox" id="7Member" name="member">
+                    <label for="7Membre">7</label>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="filtersSubmit">Apply</button>
+            </div>
+        </form>
     </div>
     <section class="artists">
         <h1 class="title">Artists</h1>
@@ -43,10 +138,10 @@
                 <p class="hover-text">{{ .Name }}</p>
             </a>
             {{ end }}
-
         </div>
     </section>
     <script src="./js/artists.js" type="text/javascript"></script>
+    <script src="./js/choosevalue.js" type="text/javascript"></script>
 </body>
 
 </html>

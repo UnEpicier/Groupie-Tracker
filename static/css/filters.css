@@ -1,17 +1,22 @@
 .filtersContainer {
     --btnSize: 100px;
+    --panelSize: 400px;
     z-index: 2;
     position: fixed;
     top: 60px;
-    right: -350px;
+    right: calc(-1 * var(--panelSize));
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width:350px;
+    width: var(--panelSize);
     height: calc(100vh - 60px);
     border-top: 1px solid #988b9d;
     background-color: #D3D1C7;
     transition: right 1s ease 0s;
+}
+
+.filtersContainer > * {
+    overflow-y: scroll;
 }
 
 .filtersActive {
@@ -78,4 +83,41 @@
     stroke-dashoffset: -134;
     stroke-width: 6;
 }
-/* END Button */
+
+
+.filtersPanel {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+    height: 100%;
+}
+
+.filtersTitle {
+    font-size: 3em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.filters {
+    width: 100%;
+}
+
+.filtersSubmit {
+    display: block;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 7px;
+    background-color: #2C272E;
+    font-size: 1.2em;
+    text-align: center;
+    color: #D3D1C7;
+    cursor: pointer;
+    transition: filter .3s ease 0s;
+}
+
+.filtersSubmit:hover {
+    filter: brightness(130%);
+}
