@@ -40,24 +40,34 @@ let co = document.getElementById('coords').innerText.replaceAll('        ', '').
 co.forEach(e => {
     coords.push(JSON.parse(e.replace(' ', ', ')))
 });
+console.log('coords: ', coords.length)
 
 /*
 Add every markers
 city: {lat, long}
 */
-let table = document.getElementsByClassName('tablecols')[1].children
 let cities = []
 
-Array.from(table).forEach(element => {
+Array.from(document.getElementsByClassName('tablecols')[1].children).forEach(element => {
     cities.push(element.innerText)
 });
 cities[0] = null
 cities = cities.filter(Boolean)
 
+console.log('cities: ', cities.length)
+
+let k = 0;
 for (const [key, value] of cities.entries()) {
-    markers[value] = { "lat": coords[key][0], "lon": coords[key][1] }
+    console.log(k)
+
+    if (typeof coords[key] !== 'undefined') {
+        markers[value] = { "lat": coords[key][0], "lon": coords[key][1] }
+        k = key
+    } else {
+        markers[value] = { "lat": coords[k][0], "lon": coords[k][1] }
+    }
 };
 
-console.log(coords, markers)
+console.log(markers)
 
 initMap(coords[0], markers)
