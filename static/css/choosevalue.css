@@ -1,4 +1,5 @@
 .chosen-value, .value-list {
+    z-index: 3;
     position: absolute;
     top: 0;
     left: 0;
@@ -6,9 +7,8 @@
 }
 
 .chosen-value {
-    font-family: 'Ek Mukta';
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 4px;
     height: 4rem;
     font-size: 1.1rem;

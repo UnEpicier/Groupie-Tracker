@@ -3,6 +3,7 @@ package groupie
 import (
 	"log"
 	"net/http"
+	"sort"
 	"strings"
 	"text/template"
 )
@@ -34,8 +35,14 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 
 	APIRequest("https://groupietrackers.herokuapp.com/api/artists")
 	data := ArtistsStruct{
-		Tab: ArtistsTab,
+		Tab:   ArtistsTab,
+		Dates: []int{},
 	}
+
+	for _, v := range data.Tab {
+		data.Dates = append(data.Dates, v.CreationDate)
+	}
+	sort.Ints(data.Dates)
 
 	err := tplt.Execute(w, data)
 	if err != nil {

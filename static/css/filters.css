@@ -83,7 +83,7 @@
     stroke-dashoffset: -134;
     stroke-width: 6;
 }
-
+/* END Button */
 
 .filtersPanel {
     flex-grow: 1;
@@ -96,13 +96,38 @@
 }
 
 .filtersTitle {
+    margin-bottom: 30px;
     font-size: 3em;
     font-weight: 300;
     text-align: center;
 }
 
 .filters {
+    flex-grow: 1;
     width: 100%;
+}
+
+.label {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+.separator {
+    --margin: 0px;
+    margin: 25px var(--margin);
+    width: calc(100% - var(--margin) * 2);
+    border-top: 1px solid #2C272E;
+
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.input-number {
+
 }
 
 .filtersSubmit {

@@ -1,7 +1,8 @@
 package groupie
 
 type ArtistsStruct struct {
-	Tab []Artists
+	Tab   []Artists
+	Dates []int
 }
 
 type Artists struct {

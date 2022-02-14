@@ -42,8 +42,9 @@
         <form class="filtersPanel">
             <p class="filtersTitle">Filters</p>
             <div class="filters">
-                <!-- Slider -->
-                <div id="my-slider" se-min="-100" se-step="1" se-min-value="40" se-max-value="40" se-max="100"
+                <!-- Dates Slider -->
+                <p class="label">Date of Creation</p>
+                <div id="datesSlider" se-min="-100" se-step="1" se-min-value="40" se-max-value="40" se-max="100"
                     class="slider">
                     <div class="slider-touch-left">
                         <span></span>
@@ -55,8 +56,12 @@
                         <span></span>
                     </div>
                 </div>
-                <div id="result">Min: 0 Max: 140</div>
+                <div id="result" class="results">
+                    <input type="number" name="min-date" id="min-date" class="input-number" min="0" max="0" size="10">
+                    <input type="number" name="max-date" id="max-date" class="input-number" min="0" max="0" size="10">
+                </div>
                 <!--  -->
+                <div class="separator"></div>
                 <input class="chosen-value" type="text" value="" placeholder="Type to filter">
                 <ul class="value-list">
                     <li>Alabama</li>
@@ -139,6 +144,8 @@
                 <button type="submit" class="filtersSubmit">Apply</button>
             </div>
         </form>
+        <!-- HIDDEN CONTENT -->
+        <span id="data-dates" class="hidden">{{.Dates}}</span>
     </div>
     <section class="artists">
         <h1 class="title">Artists</h1>
