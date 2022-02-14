@@ -8,8 +8,8 @@
     <title>Artists | Groupie Tracker</title>
     <link rel="stylesheet" href="css/globals.css">
     <link rel="stylesheet" href="css/artists.css">
-    <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/choosevalue.css">
     <script src="https://kit.fontawesome.com/019c1af01b.js" crossorigin="anonymous"></script>
 </head>
@@ -42,9 +42,20 @@
         <form class="filtersPanel">
             <p class="filtersTitle">Filters</p>
             <div class="filters">
-                <!-- Custom element -->
-                <input type="text" class="js-range-slider" name="my_range" value="" data-skin="round" data-type="double"
-                    data-min="0" data-max="1000" data-grid="false" />
+                <!-- Slider -->
+                <div id="my-slider" se-min="-100" se-step="1" se-min-value="40" se-max-value="40" se-max="100"
+                    class="slider">
+                    <div class="slider-touch-left">
+                        <span></span>
+                    </div>
+                    <div class="slider-touch-right">
+                        <span></span>
+                    </div>
+                    <div class="slider-line">
+                        <span></span>
+                    </div>
+                </div>
+                <div id="result">Min: 0 Max: 140</div>
                 <!--  -->
                 <input class="chosen-value" type="text" value="" placeholder="Type to filter">
                 <ul class="value-list">
@@ -119,7 +130,7 @@
 
                     <input type="checkbox" id="6Member" name="member">
                     <label for="6Membre">6</label>
-                    
+
                     <input type="checkbox" id="7Member" name="member">
                     <label for="7Membre">7</label>
                 </div>
@@ -140,6 +151,7 @@
             {{ end }}
         </div>
     </section>
+    <script src="./js/slider.js"></script>
     <script src="./js/artists.js" type="text/javascript"></script>
     <script src="./js/choosevalue.js" type="text/javascript"></script>
 </body>

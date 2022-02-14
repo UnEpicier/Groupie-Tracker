@@ -52,3 +52,17 @@ const toggleFilters = () => {
         el.classList.add('filtersActive')
     }
 }
+
+/* SLIDER */
+
+let creationDate = new ZBRangeSlider('my-slider');
+
+creationDate.onChange = function (min, max) {
+    console.log(min, max, this);
+    document.getElementById('result').innerText = 'Min: ' + min + ' Max: ' + max;
+}
+
+creationDate.didChanged = function (min, max) {
+    console.log(min, max, this);
+    document.getElementById('result').innerText = 'Min: ' + min + ' Max: ' + max;
+}

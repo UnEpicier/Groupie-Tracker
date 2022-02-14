@@ -1,8 +1,9 @@
 const inputField = document.querySelector('.chosen-value');
 const dropdown = document.querySelector('.value-list');
 const dropdownArray = [...document.querySelectorAll('li')];
-console.log(typeof dropdownArray);
-dropdown.classList.add('open');
+
+//console.log(typeof dropdownArray);
+// dropdown.classList.add('open');
 inputField.focus(); // Demo purposes only
 
 let valueArray = [];
@@ -33,6 +34,7 @@ inputField.addEventListener('input', () => {
     }
   }
 });
+
 dropdownArray.forEach(item => {
   item.addEventListener('click', evt => {
     inputField.value = item.textContent;
@@ -41,6 +43,7 @@ dropdownArray.forEach(item => {
     });
   });
 });
+
 inputField.addEventListener('focus', () => {
   inputField.placeholder = 'Type to filter';
   dropdown.classList.add('open');
@@ -48,10 +51,12 @@ inputField.addEventListener('focus', () => {
     dropdown.classList.remove('closed');
   });
 });
+
 inputField.addEventListener('blur', () => {
   inputField.placeholder = 'Select state';
   dropdown.classList.remove('open');
 });
+
 document.addEventListener('click', evt => {
   const isDropdown = dropdown.contains(evt.target);
   const isInput = inputField.contains(evt.target);
