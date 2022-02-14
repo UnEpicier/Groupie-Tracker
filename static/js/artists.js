@@ -8,23 +8,24 @@ for (let i = 0; i < l.length; i++) {
 const reqSuggests = (event) => {
     let input = event.value != "" || event.value !== 'undefined' ? (event.value).toLowerCase() : ""
 
-    console.log('test')
-
     for (let i = 0; i < document.getElementsByClassName('suggestList')[0].children.length; i++) {
         document.getElementsByClassName('suggestList')[0].children[i].remove()
     }
     document.getElementsByClassName('suggestList')[0].classList.remove('suggestList_Active')
 
-    if (input == "") {
+    if (!(input.length > 0)) {
         for (let i = 0; i < document.getElementsByClassName('suggestList')[0].children.length; i++) {
             document.getElementsByClassName('suggestList')[0].children[i].remove()
         }
         document.getElementsByClassName('suggestList')[0].classList.remove('suggestList_Active')
     }
 
-    if (input != "") {
+    if (input.length > 0) {
+        for (let el of document.getElementsByClassName('suggestList')[0].children) {
+            el.remove()
+        }
         names.forEach(el => {
-            if (el.toLowerCase().includes(input)) {
+            if (input.substring(0, input.length) === el.substring(0, input.length).toLowerCase()) {
                 let n = document.createElement('li');
                 let a = document.createElement('a')
                 a.setAttribute('href', "artist?a=" + el.replace(" ", "%20"))
