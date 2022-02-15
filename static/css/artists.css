@@ -88,49 +88,6 @@
     filter: brightness(90%);
 }
 
-.suggestList {
-    z-index: 3;
-    position: absolute;
-    top: 119%;
-    left: -3px;
-    width: 102.4%;
-    max-height: 0px;
-    list-style: none;
-    background-color: #fff;
-    overflow: auto;
-    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
-    transition: .3s ease-in-out;
-}
-
-.suggestList.suggestList_Active {
-    max-height: 300px;
-}
-
-.suggestList > li {
-    height: max-content;
-}
-
-.suggestList > li:not(:last-child) {
-    border-bottom: 1px solid #ddd;
-}
-
-.suggestList > li > a {
-    display: block;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    font-size: 1rem;
-    text-decoration: none;
-    text-transform: capitalize;
-    color: #2C272E;
-    cursor: pointer;
-    transition: background-color .3s ease 0s;
-}
-
-.suggestList > li > a:hover {
-    background-color: #eee;
-}
-
 .artists {
     display: flex;
     flex-direction: column;

@@ -1,45 +1,29 @@
-let names = [];
-
-const l = document.getElementsByClassName('container')[0].children
-for (let i = 0; i < l.length; i++) {
-    names.push(l[i].children[1].innerText)
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
+
+const grid = [...document.getElementsByClassName('container')[0].children];
 
 const reqSuggests = (event) => {
     let input = event.value != "" || event.value !== 'undefined' ? (event.value).toLowerCase() : ""
 
-    for (let i = 0; i < document.getElementsByClassName('suggestList')[0].children.length; i++) {
-        document.getElementsByClassName('suggestList')[0].children[i].remove()
-    }
-    document.getElementsByClassName('suggestList')[0].classList.remove('suggestList_Active')
+    removeAllChildNodes(document.getElementsByClassName('container')[0])
 
-    if (!(input.length > 0)) {
-        for (let i = 0; i < document.getElementsByClassName('suggestList')[0].children.length; i++) {
-            document.getElementsByClassName('suggestList')[0].children[i].remove()
-        }
-        document.getElementsByClassName('suggestList')[0].classList.remove('suggestList_Active')
+    // If input empty
+    if (input.length < 1) {
+        grid.forEach(el => {
+            document.getElementsByClassName('container')[0].insertAdjacentElement('beforeend', el)
+        })
     }
 
     if (input.length > 0) {
-        for (let el of document.getElementsByClassName('suggestList')[0].children) {
-            el.remove()
-        }
-        names.forEach(el => {
-            if (input.substring(0, input.length) === el.substring(0, input.length).toLowerCase()) {
-                let n = document.createElement('li');
-                let a = document.createElement('a')
-                a.setAttribute('href', "artist?a=" + el.replace(" ", "%20"))
-                a.appendChild(document.createTextNode(el))
-                n.appendChild(a)
-
-                document.getElementsByClassName('suggestList')[0].insertAdjacentElement('afterbegin', n)
+        grid.forEach(el => {
+            if (input.substring(0, input.length) === (el.children[1].innerText).substring(0, input.length).toLowerCase()) {
+                document.getElementsByClassName('container')[0].insertAdjacentElement('beforeend', el)
             }
         });
-        if (document.getElementsByClassName('suggestList')[0].children.length > 0) {
-            document.getElementsByClassName('suggestList')[0].classList.add('suggestList_Active')
-        } else {
-            document.getElementsByClassName('suggestList')[0].classList.remove('suggestList_Active')
-        }
     }
 }
 

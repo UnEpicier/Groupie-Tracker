@@ -2,8 +2,6 @@ const inputField = document.querySelector('.chosen-value');
 const dropdown = document.querySelector('.value-list');
 const dropdownArray = [...document.querySelectorAll('li')];
 
-console.log(dropdownArray);
-
 let valueArray = [];
 dropdownArray.forEach(item => {
   valueArray.push(item.textContent);
