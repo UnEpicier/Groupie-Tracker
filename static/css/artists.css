@@ -114,6 +114,14 @@
     width: 100%;
 }
 
+.noresult {
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: center;
+    color: #D3D1C7;
+    filter: brightness(85%);
+}
+
 .thumbnail {
     position: relative;
     background-color: #fff;

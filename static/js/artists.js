@@ -25,6 +25,14 @@ const reqSuggests = (event) => {
             }
         });
     }
+
+    // If any result, print "No result found"
+    if (document.getElementsByClassName('container')[0].children.length == 0) {
+        let nr = document.createElement('p')
+        nr.classList.add('noresult')
+        nr.innerText = 'No result found!'
+        document.getElementsByClassName('container')[0].appendChild(nr)
+    }
 }
 
 /* Filters bars */
