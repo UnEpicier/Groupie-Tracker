@@ -15,22 +15,17 @@
     transition: right 1s ease 0s;
 }
 
-.filtersContainer > * {
-    overflow-y: scroll;
-}
-
 .filtersActive {
     right: 0;
 }
 
-.filtersContainer:not(.filtersActive) > .menu {
+.filtersContainer:not(.filtersActive) .menu {
     margin-left: calc(0px - var(--btnSize));
 }
 
 .filtersContainer.filtersActive .line {
     stroke: #2C272E;
 }
-
 
 /* START Button */
 .menu {
@@ -124,10 +119,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-}
-
-.input-number {
-
 }
 
 .filtersSubmit {
