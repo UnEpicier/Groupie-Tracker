@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groupie Tracker</title>
@@ -9,10 +11,11 @@
     <link rel="stylesheet" href="/css/animations.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
+
 <body>
     <section class="landing">
         {{ range .Urls }}
-            <div class="image" style="background-image: url('{{ . }}');"></div>
+        <div class="image" style="background-image: url('{{ . }}');"></div>
         {{ end }}
         <div class="container">
             <h1 class="title">Groupie Tracker</h1>
@@ -21,4 +24,5 @@
         </div>
     </section>
 </body>
+
 </html>
