@@ -107,3 +107,17 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 }
+
+func ErrorHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path == "/" {
+		IndexHandler(w, r)
+		return
+	}
+
+	tplt := template.Must(template.ParseFiles("./static/error.html"))
+
+	err := tplt.Execute(w, tplt)
+	if err != nil {
+		log.Fatal(err)
+	}
+}

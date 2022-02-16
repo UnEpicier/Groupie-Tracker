@@ -13,7 +13,8 @@ func main() {
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./static/js"))))
 
 	// Handle Pages Templates
-	http.HandleFunc("/", g.IndexHandler)
+	http.HandleFunc("/", g.ErrorHandler)
+	http.HandleFunc("/index", g.IndexHandler)
 	http.HandleFunc("/artists", g.ArtistsHandler)
 	http.HandleFunc("/artist", g.ArtistHandler)
 
