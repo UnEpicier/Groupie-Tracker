@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"sort"
+	"strconv"
 	"strings"
 	"text/template"
 )
@@ -43,6 +44,21 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 		data.CreaDates = append(data.CreaDates, v.CreationDate)
 	}
 	sort.Ints(data.CreaDates)
+
+	if r.Method == "POST" {
+		if err := r.ParseForm(); err != nil {
+			log.Fatal(err)
+		}
+
+		minDateC, _ := strconv.Atoi(r.FormValue("minDateC"))
+		maxDateC, _ := strconv.Atoi(r.FormValue("maxDateC"))
+
+		for k, v := range data.Tab {
+			if v.CreationDate < minDateC || v.CreationDate > maxDateC {
+				removeArtist(data.Tab, k)
+			}
+		}
+	}
 
 	err := tplt.Execute(w, data)
 	if err != nil {

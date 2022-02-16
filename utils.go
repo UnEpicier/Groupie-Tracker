@@ -47,3 +47,7 @@ func contains(s []string, e string) bool {
 func remove(slice []string, s int) []string {
 	return append(slice[:s], slice[s+1:]...)
 }
+
+func removeArtist(slice []Artists, s int) []Artists {
+	return append(slice[:s], slice[s+1:]...)
+}
