@@ -78,6 +78,13 @@
     stroke-dashoffset: -134;
     stroke-width: 6;
 }
+
+@media screen and (max-width: 768px) {
+    .filtersContainer {
+        --btnSize: 50px;
+        --panelSize: 100vw;
+    }
+}
 /* END Button */
 
 .filtersPanel {

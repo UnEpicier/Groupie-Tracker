@@ -69,7 +69,7 @@ slider.setAttribute('se-max-value', datesCreated[datesCreated.length - 1])
 document.getElementById('result').children[0].innerText = datesCreated[0]
 document.getElementById('result').children[1].innerText = datesCreated[datesCreated.length - 1]
 document.getElementsByName('minDateC')[0].value = datesCreated[0]
-document.getElementById('maxDateC')[0].value = datesCreated[datesCreated.length - 1]
+document.getElementsByName('maxDateC')[0].value = datesCreated[datesCreated.length - 1]
 
 
 let creationDate = new ZBRangeSlider('datesCSlider');
@@ -78,12 +78,12 @@ creationDate.onChange = function (min, max) {
     document.getElementById('result').children[0].innerText = min
     document.getElementById('result').children[1].innerText = max
     document.getElementsByName('minDateC')[0].value = min
-    document.getElementById('maxDateC')[0].value = max
+    document.getElementsByName('maxDateC')[0].value = max
 }
 
 creationDate.didChanged = function (min, max) {
     document.getElementById('result').children[0].innerText = min
     document.getElementById('result').children[1].innerText = max
     document.getElementsByName('minDateC')[0].value = min
-    document.getElementById('maxDateC')[0].value = max
+    document.getElementsByName('maxDateC')[0].value = max
 }
