@@ -35,14 +35,14 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 
 	APIRequest("https://groupietrackers.herokuapp.com/api/artists")
 	data := ArtistsStruct{
-		Tab:   ArtistsTab,
-		Dates: []int{},
+		Tab:       ArtistsTab,
+		CreaDates: []int{},
 	}
 
 	for _, v := range data.Tab {
-		data.Dates = append(data.Dates, v.CreationDate)
+		data.CreaDates = append(data.CreaDates, v.CreationDate)
 	}
-	sort.Ints(data.Dates)
+	sort.Ints(data.CreaDates)
 
 	err := tplt.Execute(w, data)
 	if err != nil {
