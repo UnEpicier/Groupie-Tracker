@@ -1,12 +1,9 @@
-.chosen-value, .value-list {
-    z-index: 3;
-    position: absolute;
-    top: 0;
-    left: 0;
+.location, .value-list {
+    padding-right: 10px;
     width: 100%;
 }
 
-.chosen-value {
+.location {
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 4px;
@@ -19,34 +16,34 @@
     color: #D3D1C7;
 }
 
-.chosen-value::-webkit-input-placeholder {
+.location::-webkit-input-placeholder {
     color: #D3D1C7;
 }
 
-.chosen-value:hover {
+.location:hover {
     background-color: #373039;
     cursor: pointer;
     color: #D3D1C7;
 }
 
-.chosen-value:hover::webkit-input-placeholder {
+.location:hover::webkit-input-placeholder {
     color: #D3D1C7;
 }
 
-.chosen-value:focus, .chosen-value.open {
+.location:focus, .location.open {
     box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
     outline: 0;
     background-color: #2C272E;
     color: #D3D1C7;
 }
 
-.chosen-value:focus, .chosen-value.open::-webkit-input-placeholder {
+.location:focus, .location.open::-webkit-input-placeholder {
     color: #D3D1C7;
 }
 
 .value-list {
+    position: absolute;
     list-style: none;
-    margin-top: 4rem;
     box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     max-height: 0;
@@ -54,7 +51,7 @@
 }
 
 .value-list.open {
-    max-height: 320px;
+    max-height: 200px;
     overflow: auto;
 }
 
@@ -72,7 +69,7 @@
 }
 
 .value-list li:hover {
-    background-color: #FF908B;
+    background-color: #D3D1C7;
 }
 
 .value-list li.closed {

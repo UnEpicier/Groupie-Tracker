@@ -1,6 +1,7 @@
 package groupie
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"sort"
@@ -38,12 +39,15 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	data := ArtistsStruct{
 		Tab:       ArtistsTab,
 		CreaDates: []int{},
+		Locations: []string{},
 	}
 
 	for _, v := range data.Tab {
 		data.CreaDates = append(data.CreaDates, v.CreationDate)
 	}
 	sort.Ints(data.CreaDates)
+
+	data.Locations = getLocations()
 
 	if r.Method == "POST" {
 		if err := r.ParseForm(); err != nil {
@@ -52,14 +56,19 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 
 		minDateC, _ := strconv.Atoi(r.FormValue("minDateC"))
 		maxDateC, _ := strconv.Atoi(r.FormValue("maxDateC"))
+		location := r.FormValue("location")
+		fmt.Println(location)
 
 		for k, v := range data.Tab {
 			if v.CreationDate < minDateC || v.CreationDate > maxDateC {
 				removeArtist(data.Tab, k)
+				if location != v.Locations {
+					removeArtist(data.Tab, k)
+				}
 			}
 		}
 	}
-
+	
 	err := tplt.Execute(w, data)
 	if err != nil {
 		log.Fatal(err)

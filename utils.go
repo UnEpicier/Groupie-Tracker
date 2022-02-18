@@ -51,3 +51,16 @@ func remove(slice []string, s int) []string {
 func removeArtist(slice []Artists, s int) []Artists {
 	return append(slice[:s], slice[s+1:]...)
 }
+
+func getLocations(as ArtistsStruct) []string {
+	res := []string{}
+	
+	for _, i := range as.Locations {
+		for _, j := range res {
+			if i != j {
+				res = append(res, i)
+			}
+		}
+	}
+	return res
+}

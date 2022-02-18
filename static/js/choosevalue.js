@@ -1,5 +1,13 @@
-const inputField = document.querySelector('.chosen-value');
+const inputField = document.querySelector('.location');
 const dropdown = document.querySelector('.value-list');
+
+Array.from(document.getElementsByClassName('thumbnail')).forEach((el) => {
+  let li = document.createElement('li')
+  li.innerText = el.children[2].innerText
+  dropdown.insertAdjacentElement('beforeend', li)
+})
+
+
 const dropdownArray = [...document.querySelectorAll('li')];
 
 let valueArray = [];
@@ -14,7 +22,6 @@ const closeDropdown = () => {
 inputField.addEventListener('input', () => {
   dropdown.classList.add('open');
   let inputValue = inputField.value.toLowerCase();
-  let valueSubstring;
 
   if (inputValue.length > 0) {
     for (let j = 0; j < valueArray.length; j++) {
