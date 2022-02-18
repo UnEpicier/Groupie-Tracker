@@ -54,13 +54,28 @@ func removeArtist(slice []Artists, s int) []Artists {
 
 func getLocations(as ArtistsStruct) []string {
 	res := []string{}
-	
-	for _, i := range as.Locations {
-		for _, j := range res {
-			if i != j {
-				res = append(res, i)
-			}
+
+	for _, v := range as.Tab {
+		GetRelations(v.Id)
+		for k := range Rels.DatesLocations {
+			res = append(res, k)
 		}
 	}
+
+	res = removeDuplicateStr(res)
+
 	return res
+}
+
+func removeDuplicateStr(strSlice []string) []string {
+
+	allKeys := make(map[string]bool)
+	list := []string{}
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
 }

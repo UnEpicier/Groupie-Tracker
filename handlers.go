@@ -47,7 +47,7 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	sort.Ints(data.CreaDates)
 
-	data.Locations = getLocations()
+	data.Locations = getLocations(data)
 
 	if r.Method == "POST" {
 		if err := r.ParseForm(); err != nil {
@@ -68,7 +68,7 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	
+
 	err := tplt.Execute(w, data)
 	if err != nil {
 		log.Fatal(err)

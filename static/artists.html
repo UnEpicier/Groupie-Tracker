@@ -106,8 +106,9 @@
                 <button type="submit" class="filtersSubmit">Apply</button>
             </div>
         </form>
-        <!-- HIDDEN CONTENT -->
+        <!-- HIDDEN CONTENT (DATA) -->
         <span id="data-dates" class="hidden">{{.CreaDates}}</span>
+        <span id="data-locations" class="hidden">{{ .Locations }}</span>
     </div>
     <section class="artists">
         <h1 class="title">Artists</h1>
@@ -116,7 +117,6 @@
             <a href="/artist?a={{ .Name }}" class="thumbnail">
                 <img src="{{ .Image }}" alt="thumbnail">
                 <p class="hover-text">{{ .Name }}</p>
-                <p class="hidden">{{ .Locations }}</p>
             </a>
             {{ end }}
         </div>
