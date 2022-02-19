@@ -56,11 +56,35 @@
                         <span></span>
                     </div>
                 </div>
-                <div id="result" class="results">
+                <div id="resultC" class="results">
                     <p>0</p>
                     <input type="hidden" name="minDateC" value="0">
                     <p>0</p>
                     <input type="hidden" name="maxDateC" value="0">
+                </div>
+
+                <div class="separator"></div>
+
+                <!-- Album Slider -->
+
+                <p class="label">Date of their first album</p>
+                <div id="datesASlider" se-min="-100" se-step="1" se-min-value="40" se-max-value="40" se-max="100"
+                    class="slider">
+                    <div class="slider-touch-left">
+                        <span></span>
+                    </div>
+                    <div class="slider-touch-right">
+                        <span></span>
+                    </div>
+                    <div class="slider-line">
+                        <span></span>
+                    </div>
+                </div>
+                <div id="resultA" class="results">
+                    <p>0</p>
+                    <input type="hidden" name="minDateA" value="0">
+                    <p>0</p>
+                    <input type="hidden" name="maxDateA" value="0">
                 </div>
 
                 <div class="separator"></div>
@@ -108,6 +132,7 @@
         </form>
         <!-- HIDDEN CONTENT (DATA) -->
         <span id="data-dates" class="hidden">{{.CreaDates}}</span>
+        <span id="data-alb" class="hidden">{{.AlbDates}}</span>
         <span id="data-locations" class="hidden">{{ .Locations }}</span>
     </div>
     <section class="artists">

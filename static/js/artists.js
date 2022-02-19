@@ -53,21 +53,22 @@ const toggleFilters = () => {
 
 /* SLIDER */
 
+// Creation Slider
 let datesCreated = document.getElementById('data-dates').innerText.replaceAll('[', '').replaceAll(']', '').split(' ')
 for (let index = 0; index < datesCreated.length; index++) {
     datesCreated[index] = parseInt(datesCreated[index])
 }
 
-let slider = document.getElementById('datesCSlider')
+let sliderC = document.getElementById('datesCSlider')
 
-slider.setAttribute('se-min', datesCreated[0])
-slider.setAttribute('se-min-value', datesCreated[0])
+sliderC.setAttribute('se-min', datesCreated[0])
+sliderC.setAttribute('se-min-value', datesCreated[0])
 
-slider.setAttribute('se-max', datesCreated[datesCreated.length - 1])
-slider.setAttribute('se-max-value', datesCreated[datesCreated.length - 1])
+sliderC.setAttribute('se-max', datesCreated[datesCreated.length - 1])
+sliderC.setAttribute('se-max-value', datesCreated[datesCreated.length - 1])
 
-document.getElementById('result').children[0].innerText = datesCreated[0]
-document.getElementById('result').children[2].innerText = datesCreated[datesCreated.length - 1]
+document.getElementById('resultC').children[0].innerText = datesCreated[0]
+document.getElementById('resultC').children[2].innerText = datesCreated[datesCreated.length - 1]
 document.getElementsByName('minDateC')[0].value = datesCreated[0]
 document.getElementsByName('maxDateC')[0].value = datesCreated[datesCreated.length - 1]
 
@@ -75,15 +76,52 @@ document.getElementsByName('maxDateC')[0].value = datesCreated[datesCreated.leng
 let creationDate = new ZBRangeSlider('datesCSlider');
 
 creationDate.onChange = function (min, max) {
-    document.getElementById('result').children[0].innerText = min
-    document.getElementById('result').children[2].innerText = max
+    document.getElementById('resultC').children[0].innerText = min
+    document.getElementById('resultC').children[2].innerText = max
     document.getElementsByName('minDateC')[0].value = min
     document.getElementsByName('maxDateC')[0].value = max
 }
 
 creationDate.didChanged = function (min, max) {
-    document.getElementById('result').children[0].innerText = min
-    document.getElementById('result').children[2].innerText = max
+    document.getElementById('resultC').children[0].innerText = min
+    document.getElementById('resultC').children[2].innerText = max
     document.getElementsByName('minDateC')[0].value = min
     document.getElementsByName('maxDateC')[0].value = max
+}
+
+// Album Slider
+
+let datesAlbum = document.getElementById('data-alb').innerText.replaceAll('[', '').replaceAll(']', '').split(' ')
+for (let index = 0; index < datesAlbum.length; index++) {
+    datesAlbum[index] = parseInt(datesAlbum[index])
+}
+
+let sliderA = document.getElementById('datesASlider')
+
+sliderA.setAttribute('se-min', datesAlbum[0])
+sliderA.setAttribute('se-min-value', datesAlbum[0])
+
+sliderA.setAttribute('se-max', datesAlbum[datesAlbum.length - 1])
+sliderA.setAttribute('se-max-value', datesAlbum[datesAlbum.length - 1])
+
+document.getElementById('resultA').children[0].innerText = datesAlbum[0]
+document.getElementById('resultA').children[2].innerText = datesAlbum[datesAlbum.length - 1]
+document.getElementsByName('minDateA')[0].value = datesAlbum[0]
+document.getElementsByName('maxDateA')[0].value = datesAlbum[datesAlbum.length - 1]
+
+
+let albumDate = new ZBRangeSlider('datesASlider');
+
+albumDate.onChange = function (min, max) {
+    document.getElementById('resultA').children[0].innerText = min
+    document.getElementById('resultA').children[2].innerText = max
+    document.getElementsByName('minDateA')[0].value = min
+    document.getElementsByName('maxDateA')[0].value = max
+}
+
+albumDate.didChanged = function (min, max) {
+    document.getElementById('resultA').children[0].innerText = min
+    document.getElementById('resultA').children[2].innerText = max
+    document.getElementsByName('minDateA')[0].value = min
+    document.getElementsByName('maxDateA')[0].value = max
 }

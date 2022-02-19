@@ -13,8 +13,6 @@ locs.forEach((el, index) => {
 	locs[index] = l
 })
 
-console.log(locs)
-
 locs.forEach((el) => {
 	let li = document.createElement('li')
 	li.innerText = el

@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	g "groupie"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func main() {
@@ -18,10 +20,13 @@ func main() {
 	http.HandleFunc("/artists", g.ArtistsHandler)
 	http.HandleFunc("/artist", g.ArtistHandler)
 
-	g.GetMap("89+Quai+Des+Chartrons")
+	ip := "0.0.0.0" // Allow every devices
+	port := 80
 
 	// Start the server
-	err := http.ListenAndServe("localhost:80", nil)
+	fmt.Println("Starting local server...")
+	fmt.Printf("Server available at:\n\t- http://localhost:%d\n\t- http://%s:%d\n", port, g.GetLocalIP(), port)
+	err := http.ListenAndServe(ip+":"+strconv.Itoa(port), nil)
 
 	if err != nil {
 		log.Fatal(err)

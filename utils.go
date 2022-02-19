@@ -2,8 +2,14 @@ package groupie
 
 import (
 	"math/rand"
+	"net"
 	"time"
 )
+
+func GetLocalIP() string {
+	conn, _ := net.Dial("ip:icmp", "google.com")
+	return conn.LocalAddr().String()
+}
 
 func getRandomAlbum(as ArtistsStruct) []string {
 	result := []string{}
@@ -45,7 +51,7 @@ func contains(s []string, e string) bool {
 }
 
 func remove(slice []string, s int) []string {
-	return append(slice[:s], slice[s+1:]...)
+	return slice[:s+copy(slice[s:], slice[s+1:])]
 }
 
 func removeArtist(slice []Artists, s int) []Artists {

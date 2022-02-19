@@ -1,7 +1,6 @@
 package groupie
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"sort"
@@ -39,13 +38,18 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	data := ArtistsStruct{
 		Tab:       ArtistsTab,
 		CreaDates: []int{},
+		AlbDates:  []int{},
 		Locations: []string{},
 	}
 
 	for _, v := range data.Tab {
 		data.CreaDates = append(data.CreaDates, v.CreationDate)
+
+		tempAl, _ := strconv.Atoi(strings.Split(v.FirstAlbum, "-")[2])
+		data.AlbDates = append(data.AlbDates, tempAl)
 	}
 	sort.Ints(data.CreaDates)
+	sort.Ints(data.AlbDates)
 
 	data.Locations = getLocations(data)
 
@@ -56,15 +60,18 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 
 		minDateC, _ := strconv.Atoi(r.FormValue("minDateC"))
 		maxDateC, _ := strconv.Atoi(r.FormValue("maxDateC"))
-		location := r.FormValue("location")
-		fmt.Println(location)
 
-		for k, v := range data.Tab {
-			if v.CreationDate < minDateC || v.CreationDate > maxDateC {
-				removeArtist(data.Tab, k)
-				if location != v.Locations {
-					removeArtist(data.Tab, k)
-				}
+		minDateA, _ := strconv.Atoi(r.FormValue("minDateA"))
+		maxDateA, _ := strconv.Atoi(r.FormValue("maxDateA"))
+
+		//location := r.FormValue("location")
+
+		for i := 0; i < len(data.Tab); i++ {
+			dA, _ := strconv.Atoi(strings.Split(data.Tab[i].FirstAlbum, "-")[2])
+
+			if !((data.Tab[i].CreationDate >= minDateC && data.Tab[i].CreationDate <= maxDateC) && (dA >= minDateA && dA <= maxDateA)) {
+				data.Tab = removeArtist(data.Tab, i)
+				i--
 			}
 		}
 	}
