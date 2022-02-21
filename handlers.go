@@ -76,15 +76,6 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		data.Tab = processFilters(data.Tab, 0, filters)
-
-		/* for i := 0; i < len(data.Tab); i++ {
-			dA, _ := strconv.Atoi(strings.Split(data.Tab[i].FirstAlbum, "-")[2])
-
-			if !((data.Tab[i].CreationDate >= minDateC && data.Tab[i].CreationDate <= maxDateC) && (dA >= minDateA && dA <= maxDateA)) {
-				data.Tab = removeArtist(data.Tab, i)
-				i--
-			}
-		} */
 	}
 
 	err := tplt.Execute(w, data)
