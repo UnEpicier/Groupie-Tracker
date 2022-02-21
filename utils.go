@@ -88,12 +88,12 @@ func removeDuplicateStr(strSlice []string) []string {
 	return list
 }
 
-func processFilters(slice []Artists, index int, filters map[string]interface{}) []Artists {
-	minDateC, _ := strconv.Atoi(fmt.Sprint(filters["Creation"].(string)[0]))
-	maxDateC, _ := strconv.Atoi(fmt.Sprint(filters["Creation"].(string)[1]))
+func processFilters(slice []Artists, index int, filters map[string][]string) []Artists {
+	minDateC, _ := strconv.Atoi(fmt.Sprint(filters["Creation"][0]))
+	maxDateC, _ := strconv.Atoi(fmt.Sprint(filters["Creation"][1]))
 
-	minDateA, _ := strconv.Atoi(fmt.Sprint(filters["Album"].(string)[0]))
-	maxDateA, _ := strconv.Atoi(fmt.Sprint(filters["Album"].(string)[1]))
+	minDateA, _ := strconv.Atoi(fmt.Sprint(filters["Album"][0]))
+	maxDateA, _ := strconv.Atoi(fmt.Sprint(filters["Album"][1]))
 
 	dA, _ := strconv.Atoi(strings.Split(slice[index].FirstAlbum, "-")[2])
 

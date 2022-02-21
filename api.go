@@ -10,6 +10,7 @@ import (
 )
 
 var ArtistsTab []Artists
+var FullArtistsTab []Artists
 
 func APIRequest(url string) {
 	req, err := http.Get(url)
@@ -23,6 +24,7 @@ func APIRequest(url string) {
 	}
 
 	json.Unmarshal(data, &ArtistsTab)
+	json.Unmarshal(data, &FullArtistsTab)
 }
 
 var Rels = Relations{}

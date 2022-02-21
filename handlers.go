@@ -37,7 +37,7 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	APIRequest("https://groupietrackers.herokuapp.com/api/artists")
 	data := ArtistsStruct{
 		Tab:       ArtistsTab,
-		FullTab:   ArtistsTab,
+		FullTab:   FullArtistsTab,
 		CreaDates: []int{},
 		AlbDates:  []int{},
 		Locations: []string{},
@@ -61,7 +61,7 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 
 		//location := r.FormValue("location")
 
-		filters := make(map[string]interface{})
+		filters := make(map[string][]string)
 
 		filters["Creation"] = []string{
 			r.FormValue("minDateC"),
@@ -71,7 +71,9 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 			r.FormValue("minDateA"),
 			r.FormValue("maxDateA"),
 		}
-		filters["Location"] = "TEST"
+		filters["Location"] = []string{
+			"",
+		}
 
 		data.Tab = processFilters(data.Tab, 0, filters)
 
