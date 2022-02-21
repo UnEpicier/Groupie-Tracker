@@ -37,12 +37,13 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	APIRequest("https://groupietrackers.herokuapp.com/api/artists")
 	data := ArtistsStruct{
 		Tab:       ArtistsTab,
+		FullTab:   ArtistsTab,
 		CreaDates: []int{},
 		AlbDates:  []int{},
 		Locations: []string{},
 	}
 
-	for _, v := range data.Tab {
+	for _, v := range data.FullTab {
 		data.CreaDates = append(data.CreaDates, v.CreationDate)
 
 		tempAl, _ := strconv.Atoi(strings.Split(v.FirstAlbum, "-")[2])
@@ -58,22 +59,30 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		minDateC, _ := strconv.Atoi(r.FormValue("minDateC"))
-		maxDateC, _ := strconv.Atoi(r.FormValue("maxDateC"))
-
-		minDateA, _ := strconv.Atoi(r.FormValue("minDateA"))
-		maxDateA, _ := strconv.Atoi(r.FormValue("maxDateA"))
-
 		//location := r.FormValue("location")
 
-		for i := 0; i < len(data.Tab); i++ {
+		filters := make(map[string]interface{})
+
+		filters["Creation"] = []string{
+			r.FormValue("minDateC"),
+			r.FormValue("maxDateC"),
+		}
+		filters["Album"] = []string{
+			r.FormValue("minDateA"),
+			r.FormValue("maxDateA"),
+		}
+		filters["Location"] = "TEST"
+
+		data.Tab = processFilters(data.Tab, 0, filters)
+
+		/* for i := 0; i < len(data.Tab); i++ {
 			dA, _ := strconv.Atoi(strings.Split(data.Tab[i].FirstAlbum, "-")[2])
 
 			if !((data.Tab[i].CreationDate >= minDateC && data.Tab[i].CreationDate <= maxDateC) && (dA >= minDateA && dA <= maxDateA)) {
 				data.Tab = removeArtist(data.Tab, i)
 				i--
 			}
-		}
+		} */
 	}
 
 	err := tplt.Execute(w, data)

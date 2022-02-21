@@ -1,8 +1,11 @@
 package groupie
 
 import (
+	"fmt"
 	"math/rand"
 	"net"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -74,7 +77,6 @@ func getLocations(as ArtistsStruct) []string {
 }
 
 func removeDuplicateStr(strSlice []string) []string {
-
 	allKeys := make(map[string]bool)
 	list := []string{}
 	for _, item := range strSlice {
@@ -84,4 +86,25 @@ func removeDuplicateStr(strSlice []string) []string {
 		}
 	}
 	return list
+}
+
+func processFilters(slice []Artists, index int, filters map[string]interface{}) []Artists {
+	minDateC, _ := strconv.Atoi(fmt.Sprint(filters["Creation"].(string)[0]))
+	maxDateC, _ := strconv.Atoi(fmt.Sprint(filters["Creation"].(string)[1]))
+
+	minDateA, _ := strconv.Atoi(fmt.Sprint(filters["Album"].(string)[0]))
+	maxDateA, _ := strconv.Atoi(fmt.Sprint(filters["Album"].(string)[1]))
+
+	dA, _ := strconv.Atoi(strings.Split(slice[index].FirstAlbum, "-")[2])
+
+	if !((slice[index].CreationDate >= minDateC && slice[index].CreationDate <= maxDateC) && (dA >= minDateA && dA <= maxDateA)) {
+		slice = removeArtist(slice, index)
+		index--
+	}
+
+	if index >= len(slice)-1 {
+		return slice
+	}
+
+	return processFilters(slice, index+1, filters)
 }

@@ -20,7 +20,7 @@ func main() {
 	http.HandleFunc("/artists", g.ArtistsHandler)
 	http.HandleFunc("/artist", g.ArtistHandler)
 
-	ip := "0.0.0.0" // Allow every devices
+	ip := "" // Allow every devices
 	port := 80
 
 	// Start the server

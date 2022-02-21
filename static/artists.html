@@ -145,6 +145,14 @@
             </a>
             {{ end }}
         </div>
+        <div class="fullcontainer hidden">
+            {{ range .FullTab }}
+            <a href="/artist?a={{ .Name }}" class="thumbnail">
+                <img src="{{ .Image }}" alt="thumbnail">
+                <p class="hover-text">{{ .Name }}</p>
+            </a>
+            {{ end }}
+        </div>
     </section>
     <script src="./js/slider.js"></script>
     <script src="./js/artists.js" type="text/javascript"></script>

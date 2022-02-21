@@ -1,10 +1,21 @@
+if (document.getElementsByClassName('container')[0].children.length == 0) {
+    if (document.getElementsByClassName('container')[0].children.length == 0) {
+        let nr = document.createElement('p')
+        nr.classList.add('noresult')
+        nr.innerText = 'No result found!'
+        document.getElementsByClassName('container')[0].appendChild(nr)
+    }
+}
+
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
 
-const grid = [...document.getElementsByClassName('container')[0].children];
+const fullgrid = [...document.getElementsByClassName('fullcontainer')[0].children]
+const grid = [...document.getElementsByClassName('container')[0].children]
+
 
 const reqSuggests = (event) => {
     let input = event.value != "" || event.value !== 'undefined' ? (event.value).toLowerCase() : ""
@@ -19,7 +30,7 @@ const reqSuggests = (event) => {
     }
 
     if (input.length > 0) {
-        grid.forEach(el => {
+        fullgrid.forEach(el => {
             if (input.substring(0, input.length) === (el.children[1].innerText).substring(0, input.length).toLowerCase()) {
                 document.getElementsByClassName('container')[0].insertAdjacentElement('beforeend', el)
             }
@@ -36,7 +47,7 @@ const reqSuggests = (event) => {
 }
 
 /* Filters bars */
-// set fix width to the div that contains the
+// Set fix width to the div that contains the
 // toggle button to keep loading of the slider(s) correct
 let btnOffW = document.getElementsByClassName('menu')[0].offsetWidth
 document.getElementById('filtersBtnC').style.width = (btnOffW + 50) + 'px'

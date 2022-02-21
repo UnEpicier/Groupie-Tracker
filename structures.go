@@ -2,6 +2,7 @@ package groupie
 
 type ArtistsStruct struct {
 	Tab       []Artists
+	FullTab   []Artists
 	CreaDates []int
 	AlbDates  []int
 	Locations []string
