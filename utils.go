@@ -10,8 +10,17 @@ import (
 )
 
 func GetLocalIP() string {
-	conn, _ := net.Dial("ip:icmp", "google.com")
-	return conn.LocalAddr().String()
+	conn, err := net.Dial("ip:icmp", "google.com")
+	if err != nil {
+		fmt.Println(err)
+		return "localhost"
+	}
+
+	if strings.Count(conn.LocalAddr().String(), ":") < 2 {
+		return conn.LocalAddr().String()
+	}
+
+	return "localhost"
 }
 
 func getRandomAlbum(as ArtistsStruct) []string {
@@ -76,6 +85,27 @@ func getLocations(as ArtistsStruct) []string {
 	return res
 }
 
+func getLocation(id int) []string {
+	res := []string{}
+
+	GetRelations(id)
+	for k := range Rels.DatesLocations {
+		res = append(res, k)
+	}
+
+	res = removeDuplicateStr(res)
+
+	return res
+}
+
+func formatFilter(str string) string {
+	str = strings.ToLower(str)
+	str = strings.Replace(str, ", ", "-", 1)
+	str = strings.ReplaceAll(str, " ", "_")
+
+	return str
+}
+
 func removeDuplicateStr(strSlice []string) []string {
 	allKeys := make(map[string]bool)
 	list := []string{}
@@ -97,7 +127,7 @@ func processFilters(slice []Artists, index int, filters map[string][]string) []A
 
 	dA, _ := strconv.Atoi(strings.Split(slice[index].FirstAlbum, "-")[2])
 
-	if !((slice[index].CreationDate >= minDateC && slice[index].CreationDate <= maxDateC) && (dA >= minDateA && dA <= maxDateA)) {
+	if !((slice[index].CreationDate >= minDateC && slice[index].CreationDate <= maxDateC) && (dA >= minDateA && dA <= maxDateA) && (contains(getLocation(slice[index].Id), formatFilter(filters["Location"][0])))) {
 		slice = removeArtist(slice, index)
 		index--
 	}

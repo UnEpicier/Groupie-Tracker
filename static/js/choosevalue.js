@@ -9,7 +9,7 @@ locs.forEach((el, index) => {
 	l = l.split('-')[0] + ', ' + l.split('-')[1].toUpperCase()
 
 	l = l.trim().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
-
+	
 	locs[index] = l
 })
 

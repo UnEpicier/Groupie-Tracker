@@ -1,6 +1,6 @@
 .filtersContainer {
     --btnSize: 100px;
-    --panelSize: 400px;
+    --panelSize: 600px;
     z-index: 2;
     position: fixed;
     top: 60px;
@@ -107,6 +107,7 @@
 .filters {
     flex-grow: 1;
     width: 100%;
+    overflow: scroll;
 }
 
 .label {

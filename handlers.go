@@ -59,8 +59,6 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		//location := r.FormValue("location")
-
 		filters := make(map[string][]string)
 
 		filters["Creation"] = []string{
@@ -72,7 +70,7 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 			r.FormValue("maxDateA"),
 		}
 		filters["Location"] = []string{
-			"",
+			r.FormValue("location"),
 		}
 
 		data.Tab = processFilters(data.Tab, 0, filters)
