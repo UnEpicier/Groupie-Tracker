@@ -1,6 +1,7 @@
 package groupie
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"sort"
@@ -36,11 +37,12 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 
 	APIRequest("https://groupietrackers.herokuapp.com/api/artists")
 	data := ArtistsStruct{
-		Tab:       ArtistsTab,
-		FullTab:   FullArtistsTab,
-		CreaDates: []int{},
-		AlbDates:  []int{},
-		Locations: []string{},
+		Tab:           ArtistsTab,
+		FullTab:       FullArtistsTab,
+		CreaDates:     []int{},
+		AlbDates:      []int{},
+		Locations:     []string{},
+		MinMaxMembers: []int{},
 	}
 
 	for _, v := range data.FullTab {
@@ -53,6 +55,8 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 	sort.Ints(data.AlbDates)
 
 	data.Locations = getLocations(data)
+
+	data.MinMaxMembers = getMinMaxMembers(data)
 
 	if r.Method == "POST" {
 		if err := r.ParseForm(); err != nil {
@@ -70,8 +74,19 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 			r.FormValue("maxDateA"),
 		}
 		filters["Location"] = []string{
-			r.FormValue("location"),
+			formatLoc(r.FormValue("location")),
 		}
+
+		reqMbs := []string{}
+		for _, v := range data.MinMaxMembers {
+			if r.FormValue("member"+strconv.Itoa(v)) == "on" {
+				reqMbs = append(reqMbs, strconv.Itoa(v))
+			}
+		}
+
+		filters["MinMaxMembers"] = reqMbs
+
+		fmt.Println(filters)
 
 		data.Tab = processFilters(data.Tab, 0, filters)
 	}

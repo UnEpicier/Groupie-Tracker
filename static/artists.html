@@ -92,7 +92,7 @@
                 <!-- Locations -->
                 <p class="label">Location of concert</p>
                 <div class="locationContainer">
-                    <input class="location" type="text" value="" name="location" placeholder="Type to filter" autocomplete="off">
+                    <input class="location" type="text" name="location" placeholder="Type to filter" autocomplete="off">
                     <ul class="value-list">
                     </ul>
                 </div>
@@ -104,26 +104,10 @@
                     <p>Number of Members :</p>
                 </div>
                 <div class="nbrMember">
-                    <input type="checkbox" id="1Member" name="member">
-                    <label for="1Membre">1</label>
-
-                    <input type="checkbox" id="2Member" name="member">
-                    <label for="2Membre">2</label>
-
-                    <input type="checkbox" id="3Member" name="member">
-                    <label for="3Membre">3</label>
-
-                    <input type="checkbox" id="4Member" name="member">
-                    <label for="4Membre">4</label>
-
-                    <input type="checkbox" id="5Member" name="member">
-                    <label for="5Membre">5</label>
-
-                    <input type="checkbox" id="6Member" name="member">
-                    <label for="6Membre">6</label>
-
-                    <input type="checkbox" id="7Member" name="member">
-                    <label for="7Membre">7</label>
+                    {{ range .MinMaxMembers }}
+                    <input type="checkbox" id="Member{{.}}" name="member{{.}}">
+                    <label for="Member{{.}}">{{ . }}</label>
+                    {{ end }}
                 </div>
             </div>
             <div>

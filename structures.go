@@ -1,11 +1,12 @@
 package groupie
 
 type ArtistsStruct struct {
-	Tab       []Artists
-	FullTab   []Artists
-	CreaDates []int
-	AlbDates  []int
-	Locations []string
+	Tab           []Artists
+	FullTab       []Artists
+	CreaDates     []int
+	AlbDates      []int
+	Locations     []string
+	MinMaxMembers []int
 }
 
 type Artists struct {

@@ -98,12 +98,32 @@ func getLocation(id int) []string {
 	return res
 }
 
-func formatFilter(str string) string {
+func formatLoc(str string) string {
 	str = strings.ToLower(str)
 	str = strings.Replace(str, ", ", "-", 1)
 	str = strings.ReplaceAll(str, " ", "_")
 
 	return str
+}
+
+func getMinMaxMembers(as ArtistsStruct) []int {
+	min := 99999
+	max := 0
+	for _, v := range as.Tab {
+		if len(v.Members) < min {
+			min = len(v.Members)
+		}
+		if len(v.Members) > max {
+			max = len(v.Members)
+		}
+	}
+
+	res := []int{}
+	for i := min; i <= max; i++ {
+		res = append(res, i)
+	}
+
+	return res
 }
 
 func removeDuplicateStr(strSlice []string) []string {
@@ -127,9 +147,32 @@ func processFilters(slice []Artists, index int, filters map[string][]string) []A
 
 	dA, _ := strconv.Atoi(strings.Split(slice[index].FirstAlbum, "-")[2])
 
-	if !((slice[index].CreationDate >= minDateC && slice[index].CreationDate <= maxDateC) && (dA >= minDateA && dA <= maxDateA) && (contains(getLocation(slice[index].Id), formatFilter(filters["Location"][0])))) {
-		slice = removeArtist(slice, index)
-		index--
+	creaDate := !(slice[index].CreationDate >= minDateC && slice[index].CreationDate <= maxDateC)
+	album := !(dA >= minDateA && dA <= maxDateA)
+	loc := contains(getLocation(slice[index].Id), filters["Location"][0])
+	members := contains(filters["MinMaxMembers"], strconv.Itoa(len(slice[index].Members)))
+
+	if !creaDate && !album {
+		if filters["Location"][0] != "" {
+			if !loc {
+				if len(filters["MinMaxMembers"]) > 0 {
+					if !members {
+						slice = removeArtist(slice, index)
+						index--
+					}
+				} else {
+					slice = removeArtist(slice, index)
+					index--
+				}
+			}
+		} else {
+			if len(filters["MinMaxMembers"]) > 0 {
+				if !members {
+					slice = removeArtist(slice, index)
+					index--
+				}
+			}
+		}
 	}
 
 	if index >= len(slice)-1 {
