@@ -1,7 +1,7 @@
 package groupie
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
 	"net/http"
 	"sort"
@@ -43,6 +43,7 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 		AlbDates:      []int{},
 		Locations:     []string{},
 		MinMaxMembers: []int{},
+		Filters:       "",
 	}
 
 	for _, v := range data.FullTab {
@@ -86,7 +87,8 @@ func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
 
 		filters["MinMaxMembers"] = reqMbs
 
-		fmt.Println(filters)
+		js, _ := json.Marshal(filters)
+		data.Filters = string(js)
 
 		data.Tab = processFilters(data.Tab, 0, filters)
 	}

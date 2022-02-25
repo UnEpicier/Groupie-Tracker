@@ -7,6 +7,7 @@ type ArtistsStruct struct {
 	AlbDates      []int
 	Locations     []string
 	MinMaxMembers []int
+	Filters       string
 }
 
 type Artists struct {

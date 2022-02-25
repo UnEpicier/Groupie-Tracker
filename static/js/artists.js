@@ -136,3 +136,9 @@ albumDate.didChanged = function (min, max) {
     document.getElementsByName('minDateA')[0].value = min
     document.getElementsByName('maxDateA')[0].value = max
 }
+
+/*
+    SHOW APPLIED FILTERS
+*/
+const js = JSON.parse(document.getElementById('data-filters').textContent)
+console.log(js)
