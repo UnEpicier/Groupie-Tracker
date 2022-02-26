@@ -1,0 +1,58 @@
+.thContainer {
+    --size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+}
+
+.thIcon {
+    width: var(--size);
+    height: var(--size);
+    background-clip: content-box;
+    background-size: contain;
+    background-position: center;
+}
+
+.thIcon:first-child {
+    margin-right: 10px;
+    background-image: url('../assets/images/sun.png');
+}
+
+.thIcon:last-child {
+    margin-left: 10px;
+    background-image: url('../assets/images/moon.png');
+}
+
+.thToggler {
+    position: relative;
+    width: calc(var(--size) * 1.6);
+    height: calc(var(--size) / 2.25);
+    border-radius: var(--size);
+    background-color: #bbb;
+    cursor: pointer;
+    transition: filter .3s ease 0s;
+}
+
+.thToggler::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-15%);
+    width: calc(var(--size) / 1.5);
+    height: calc(var(--size) / 1.5);
+    border-radius: 50%;
+    background-color: #828282;
+    transition: left .5s ease 0s, background-color .5s ease 0s, transform .5s ease 0s; 
+}
+
+.thToggler:hover::after {
+    filter: brightness(90%);
+}
+
+.thToggler.thActive::after {
+    left: 100%;
+    transform: translateX(-100%) translateY(-15%);
+    background-color: #ff6347;
+}

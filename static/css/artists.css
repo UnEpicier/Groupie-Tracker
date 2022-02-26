@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #D3D1C7;
+    background-color: #2C272E;
     padding: 15px;
     width: 100%;
     height: 60px;
@@ -25,8 +25,7 @@
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.05em;
-    color: #2C272E;
-    height: 10;
+    color: #D3D1C7;
     line-height: 20px;
     padding-bottom: 10px;
 }
@@ -40,7 +39,7 @@
     width: 0;
     height: 2px;
     background: none repeat scroll 0 0 transparent;
-    background: #2C272E;
+    background: #D3D1C7;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
@@ -50,6 +49,7 @@
 }
 
 .navSearch {
+    align-self: flex-end;
     position: relative;
     display: flex;
     align-items: center;
@@ -63,7 +63,7 @@
     z-index: 4;
     position: relative;
     padding: 7px 0 7px 10px;
-    border: 3px solid transparent;
+    border: 1px solid #D3D1C7;
     background-color: #2C272E;
     outline: none;
     font-size: 1rem;
@@ -75,8 +75,8 @@
 }
 
 .searchBtn {
-    padding: 10.75px 12px;
-    border: 1px solid #2C272E;
+    padding: 10px 12px;
+    border: none;
     background-color: #D3D1C7;
     color: #2C272E;
     outline: none;
@@ -102,7 +102,7 @@
     font-size: 3em;
     font-weight: 300;
     text-align: center;
-    color: #fff;
+    color: #2C272E;
 }
 
 .container {
@@ -118,7 +118,7 @@
     font-size: 1.5em;
     font-weight: 300;
     text-align: center;
-    color: #D3D1C7;
+    color: #2C272E;
     filter: brightness(85%);
 }
 
@@ -165,4 +165,41 @@
 
 .thumbnail:hover > .hover-text {
     opacity: 1;
+}
+
+/* DARK THEME */
+
+[data-theme="dark"] .navbar {
+    background-color: #D3D1C7;
+}
+
+[data-theme="dark"] .back {
+    color: #2C272E;
+}
+
+[data-theme="dark"] .back:after {    
+    background: #2C272E;
+}
+
+[data-theme="dark"] .search {
+    border: 1px solid #2C272E;
+    background-color: #D3D1C7;
+    color: #2C272E;
+}
+
+[data-theme="dark"] .search:hover {
+    background-color: #373039;
+}
+
+[data-theme="dark"] .searchBtn {
+    background-color: #2C272E;
+    color: #D3D1C7;
+}
+
+[data-theme="dark"] .title {
+    color: #fff;
+}
+
+[data-theme="dark"] .noresult {
+    color: #D3D1C7;
 }
