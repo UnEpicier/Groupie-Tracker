@@ -6,11 +6,17 @@ body {
     min-height: 100vh;
 }
 
+.thContainer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
 .title {
     font-size: 4rem;
     font-weight: 300;
     text-align: center;
-    color: #aaa;
+    color: #444;
 }
 
 .desc {
@@ -19,7 +25,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     text-align: center;
-    color: #fff;
+    color: #222;
 }
 
 .btn {
@@ -44,4 +50,13 @@ body {
     margin-top: 5px;
     margin-bottom: -5px;
     box-shadow: none;
+}
+
+/* DARK THEME */
+[data-theme="dark"] .title {
+    color: #aaa;
+}
+
+[data-theme="dark"] .desc {
+    color: #fff;
 }

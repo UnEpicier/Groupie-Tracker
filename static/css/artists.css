@@ -16,6 +16,7 @@
     height: 60px;
     font-size: 30px;
     text-decoration: none;
+    transition: background-color .5s ease 0s;
 }
 
 
@@ -28,6 +29,7 @@
     color: #D3D1C7;
     line-height: 20px;
     padding-bottom: 10px;
+    transition: color .5s ease 0s;
 }
 
 .back:after {    
@@ -39,8 +41,8 @@
     width: 0;
     height: 2px;
     background: none repeat scroll 0 0 transparent;
-    background: #D3D1C7;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    background-color: #D3D1C7;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s, background-color .5s ease 0s;
 }
 
 .back:hover:after { 
@@ -68,6 +70,7 @@
     outline: none;
     font-size: 1rem;
     color: #D3D1C7;
+    transition: border .5s ease 0s, background-color .5s ease 0s, color .5s ease 0s;
 }
 
 .search:hover {
@@ -81,7 +84,7 @@
     color: #2C272E;
     outline: none;
     cursor: pointer;
-    transition: filter .3s ease 0s;
+    transition: filter .3s ease 0s, background-color .5s ease 0s, color .5s ease 0s;
 }
 
 .searchBtn:hover {
@@ -103,6 +106,7 @@
     font-weight: 300;
     text-align: center;
     color: #2C272E;
+    transition: color .5s ease 0s;
 }
 
 .container {
@@ -120,6 +124,7 @@
     text-align: center;
     color: #2C272E;
     filter: brightness(85%);
+    transition: color .5s ease 0s;
 }
 
 .thumbnail {

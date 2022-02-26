@@ -14,6 +14,7 @@
 
 <body>
     <section class="landing">
+        <div id="toggler"></div>
         {{ range .Urls }}
         <div class="image" style="background-image: url('{{ . }}');"></div>
         {{ end }}
@@ -23,6 +24,8 @@
             <a href="/artists" class="btn">Discover</a>
         </div>
     </section>
+    <script src="./js/cookies.js"></script>
+    <script src="./js/thToggler.js"></script>
 </body>
 
 </html>

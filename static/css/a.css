@@ -3,26 +3,31 @@
 }
 
 .navbar {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
-    background-color: #D3D1C7;
+    align-items: center;
+    background-color: #2C272E;
     padding: 15px;
+    width: 100%;
     height: 60px;
     font-size: 30px;
     text-decoration: none;
+    transition: background-color .5s ease 0s;
 }
 
-
 .btn {
-    position: absolute;
     display: inline-block;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.05em;
-    color: #2C272E;
-    height: 10;
+    color: #D3D1C7;
     line-height: 20px;
     padding-bottom: 10px;
+    transition: color .5s ease 0s;
 }
 
 .btn:after {    
@@ -34,8 +39,8 @@
     width: 0;
     height: 2px;
     background: none repeat scroll 0 0 transparent;
-    background: #2C272E;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    background-color: #D3D1C7;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s, background-color .5s ease 0s;
 }
 
 .btn:hover:after { 
@@ -53,9 +58,10 @@
 .infos {
     display: flex;
     justify-content: center;
+    margin-top: 60px;
+    padding-bottom: 30px;
     width: 100%;
     height: 100%;
-    padding-bottom: 30px;
 }
 
 .header {
@@ -63,9 +69,10 @@
 }
 
 .header > p {
-    color: #D3D1C7;
+    color: #2C272E;
     font-size: 30px;
     font-weight: 300;
+    transition: color .5s ease 0s;
 }
 
 .content {
@@ -95,13 +102,15 @@
 
 .cols p {
     width: max-content;
-    color: #D3D1C7;
+    color: #2C272E;
+    transition: color .5s ease 0s;
 }
 
 span {
     margin-left: 10px;
     font-weight: 300;
-    color: #b7b4a4;
+    color: #444;
+    transition: color .5s ease 0s;
 }
 
 .list {
@@ -111,7 +120,8 @@ span {
 .list > li {
     width: max-content;
     font-weight: 300;
-    color: #b7b4a4;
+    color: #444;
+    transition: color .5s ease 0s;
 }
 
 .concert {
@@ -133,7 +143,8 @@ span {
     border-collapse: collapse;
     font-weight: 300;
     text-align: center;
-    color: #b7b4a4;
+    color: #444;
+    transition: color .5s ease 0s;
 }
 
 .tableTitle {
@@ -142,20 +153,23 @@ span {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: .15em;
-    color: #d9d7cf;
+    color: #333;
+    transition: color .5s ease 0s;
 }
 
 .tableColsTitle {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: .15em;
-    color: #D3D1C7;
+    color: #2C272E;
+    transition: color .5s ease 0s;
 }
 
 .tablecols > li {
     padding: 5px 0;
     border-collapse: collapse;
-    border: 1px solid #fff;
+    border: 1px solid #000;
+    transition: border .5s ease 0s;
 }
 
 @media screen and (max-width: 768px) {
@@ -175,4 +189,50 @@ span {
     margin-top: 50px;
     margin-bottom: 50px;
     height: var(--size);
+}
+
+/* DARK THEME */
+
+[data-theme="dark"] .navbar {
+    background-color: #D3D1C7;
+}
+
+[data-theme="dark"] .btn {
+    color: #2C272E;
+}
+
+[data-theme="dark"] .btn:after {
+    background-color: #2C272E;
+}
+
+[data-theme="dark"] .header > p {
+    color: #D3D1C7;
+}
+
+[data-theme="dark"] .cols p {
+    color: #D3D1C7
+}
+
+[data-theme="dark"] span {
+    color: #b7b4a4;
+}
+
+[data-theme="dark"] .list > li {
+    color: #b7b4a4;
+}
+
+[data-theme="dark"] .tablecols {
+    color: #b7b4a4;
+}
+
+[data-theme="dark"] .tableTitle {
+    color: #d9d7cf;
+}
+
+[data-theme="dark"] .tableColsTitle {
+    color: #D3D1C7;
+}
+
+[data-theme="dark"] .tablecols > li {
+    border: 1px solid #fff;
 }

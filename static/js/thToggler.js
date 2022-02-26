@@ -3,12 +3,12 @@ function toggleActive(event) {
     switch (target.classList.contains('thActive')) {
         case true:
             target.classList.remove('thActive')
-            setCookie('theme', 'light')
+            setCookie('theme', 'light', 3000)
             document.body.setAttribute('data-theme', 'light')
             break
         case false:
             target.classList.add('thActive')
-            setCookie('theme', 'dark')
+            setCookie('theme', 'dark', 3000)
             document.body.setAttribute('data-theme', 'dark')
             break
     }
@@ -58,7 +58,7 @@ function initTheme() {
             def_active = true
         }
     } else {
-        setCookie('theme', 'dark')
+        setCookie('theme', 'dark', 3000)
         document.body.setAttribute('data-theme', 'dark')
         def_active = true
     }
