@@ -208,3 +208,11 @@
 [data-theme="dark"] .noresult {
     color: #D3D1C7;
 }
+
+@media screen and (max-width: 768px) {
+    .thContainer {
+        position: absolute;
+        top: 70px;
+        right: 10px;
+    }
+}
