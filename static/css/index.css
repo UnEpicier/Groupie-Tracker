@@ -47,9 +47,9 @@
 .btn {
     display: block;
     padding: 1rem 3rem;
-    background-color: #700B97;
+    background-color: #2C272E;
     border-radius: 12px;
-    box-shadow: 0 5px #3E065F;
+    box-shadow: 0 5px #1e1b20;
     font-size: 1.2rem;
     text-align: center;
     text-decoration: none;
@@ -59,7 +59,7 @@
 }
 
 .btn:hover {
-    background-color: #640987;
+    background-color: #201d22;
 }
 
 .btn:focus {
@@ -182,4 +182,13 @@
 
 [data-theme="dark"] .description {
     color: #fff;
+}
+
+[data-theme="dark"] .btn {
+    background-color: #988b9d;
+    box-shadow: 0 5px #6b5e70;
+}
+
+[data-theme="dark"] .btn:hover {
+    background-color: #6b5e70;
 }
