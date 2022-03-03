@@ -9,6 +9,9 @@
 html, body {
     width: 100%;
     min-height: 100%;
+}
+
+body {
     background-color: #D3D1C7;
     transition: background-color .5s ease 0s;
 }
